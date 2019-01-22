@@ -3,6 +3,7 @@
 .idea
 
 data/original_data/
+!data/original_data/PLACE_HOLDER
 
 notebooks/
 
