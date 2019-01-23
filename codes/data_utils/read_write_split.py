@@ -3,22 +3,23 @@ import json
 
 import numpy as np
 
-from codes.data_utils import SPLIT_DATASET_ROOT
+from codes.data_utils import SPLIT_DATASET_ROOT, MAX_FEATURE_SIZE
 
 
 def read_split_dataset(split_dataset_file_path):
     with open(split_dataset_file_path) as f:
         split_dataset = json.load(f)
 
-        x, g = [], []
-        for sample in split_dataset:
-            x.append(sample['features'])
-            g.append(sample['label'])
+        X = np.zeros((len(split_dataset), MAX_FEATURE_SIZE), np.float32)
+        G = []
+        for i, sample in enumerate(split_dataset):
+            x = sample['features']
+            g = sample['label']
 
-        x = np.asarray(x, np.float32)
-        g = np.asarray(g, str)
+            X[i, :len(x)] = x
+            G.append(g)
 
-        return x, g
+        return X, G
 
 
 def read_online_dataset():

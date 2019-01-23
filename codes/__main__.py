@@ -1,15 +1,17 @@
-from codes.data_utils.read_write_original import read_original_datasets
-from codes.data_utils.online_offline_split import split_online_offline, save_split_dataset
+import argparse
 
-
-def split_original_dataset_to_online_offline():
-    original_dataset = read_original_datasets()
-
-    online_dataset, offline_dataset = split_online_offline(original_dataset, 0.5)
-
-    save_split_dataset(online_dataset, 'online')
-    save_split_dataset(offline_dataset, 'offline')
+from codes.cmd.split import split_original_dataset_to_online_offline
+from codes.cmd.train_experts import train_experts
 
 
 if __name__ == '__main__':
-    split_original_dataset_to_online_offline()
+    jump_table = {
+        'split': split_original_dataset_to_online_offline,
+        'train_experts': train_experts,
+    }
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--mode', required=True, type=str, choices=jump_table.keys())
+    args = parser.parse_args()
+
+    jump_table[args.mode]()
