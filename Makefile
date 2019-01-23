@@ -7,3 +7,12 @@ decompress_original:
 	rm -rf data/original_data/murphy
 	rm data/original_data/learn.zip
 	rm data/original_data/test.zip
+
+split_online_offline_datasets:
+	python -m codes --mode=split
+
+train_experts:
+	python -m codes --mode=train_experts
+
+go_online:
+	python -m codes --mode=go_online
