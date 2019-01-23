@@ -30,5 +30,5 @@ def save_split_dataset(split_dataset, name):
         writable_dataset.append(sample)
 
     split_dataset_file_path = os.path.join(SPLIT_DATASET_ROOT, '{0}_dataset.json'.format(name))
-    with open(split_dataset_file_path, 'w') as f:
+    with open(split_dataset_file_path, 'wt') as f:
         json.dump(writable_dataset, f, indent=4, sort_keys=True)
