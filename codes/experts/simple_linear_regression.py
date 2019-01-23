@@ -15,4 +15,5 @@ class SimpleLinearRegressor(AbstracExpert):
     def suggest(self, x):
         x = x.reshape(1, -1)
         y_hat = self.model.predict(x)
-        return y_hat[0]
+        g_hat = self.one_hot_vector_2_label(y_hat[0])
+        return g_hat
