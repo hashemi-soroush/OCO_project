@@ -32,15 +32,14 @@ class AbstracExpert:
     def suggest(self, x):
         raise NotImplementedError
 
-    def calculate_offline_error(self, X, G):
+    def calculate_offline_loss(self, X, G):
         G_hat = [self.suggest(x) for x in X]
 
         G = np.array(G)
-        error_count = np.sum(G != G_hat)
+        loss = (G != G_hat)
+        cumulative_loss = np.cumsum(loss) / list(range(1, len(G_hat)+1))
 
-        error_rate = error_count * 1.0 / len(G_hat)
-
-        return error_rate
+        return cumulative_loss
 
     def save_model(self):
         with open('trained_models/{0}.model'.format(self.name), 'wb') as f:

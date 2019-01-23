@@ -15,7 +15,7 @@ def train_experts():
 
     # print('testing simple linear regressor \t {0}'.format(datetime.now()))
     # X2, G2 = read_online_dataset()
-    # print(simple_linear_regressor.calculate_offline_error(X2, G2))
+    # print(simple_linear_regressor.calculate_offline_loss(X2, G2)[-1])
 
     print('training simple random forest \t {0}'.format(datetime.now()))
     simple_random_forest = SimpleRandomForest()
@@ -24,4 +24,4 @@ def train_experts():
 
     # print('testing simple random forest \t {0}'.format(datetime.now()))
     # X2, G2 = read_online_dataset()
-    # print(simple_random_forest.calculate_offline_error(X2, G2))
+    # print(simple_random_forest.calculate_offline_loss(X2, G2)[-1])

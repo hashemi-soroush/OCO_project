@@ -5,5 +5,5 @@ from codes.experts.simple_random_forest import SimpleRandomForest
 def get_all_experts():
     return [
         SimpleLinearRegressor(),
-        SimpleRandomForest()
+        SimpleRandomForest(),
     ]
