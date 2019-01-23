@@ -5,7 +5,7 @@ from codes.experts.abstract_expert import AbstracExpert
 
 class SimpleRandomForest(AbstracExpert):
     def __init__(self):
-        super(SimpleRandomForest, self).__init__()
+        super(SimpleRandomForest, self).__init__('simple_random_forest')
         self.model = RandomForestClassifier()
 
     def train(self, X, G):

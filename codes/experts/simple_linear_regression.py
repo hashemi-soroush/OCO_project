@@ -5,7 +5,7 @@ from codes.experts.abstract_expert import AbstracExpert
 
 class SimpleLinearRegressor(AbstracExpert):
     def __init__(self):
-        super(SimpleLinearRegressor, self).__init__()
+        super(SimpleLinearRegressor, self).__init__('simple_linear_regressor')
         self.model = LinearRegression()
 
     def train(self, X, G):

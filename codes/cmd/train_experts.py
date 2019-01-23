@@ -11,6 +11,7 @@ def train_experts():
     print('training simple linear regressor \t {0}'.format(datetime.now()))
     simple_linear_regressor = SimpleLinearRegressor()
     simple_linear_regressor.train(X, G)
+    simple_linear_regressor.save_model()
 
     # print('testing simple linear regressor \t {0}'.format(datetime.now()))
     # X2, G2 = read_online_dataset()
@@ -19,6 +20,7 @@ def train_experts():
     print('training simple random forest \t {0}'.format(datetime.now()))
     simple_random_forest = SimpleRandomForest()
     simple_random_forest.train(X, G)
+    simple_random_forest.save_model()
 
     # print('testing simple random forest \t {0}'.format(datetime.now()))
     # X2, G2 = read_online_dataset()

@@ -1,10 +1,14 @@
+import pickle
+
 import numpy as np
 
 
 class AbstracExpert:
     LABELS = {'a', 'c', 'd', 'e', 'f', 'g', 'h', 'l', 'p', 'r'}
 
-    def __init__(self):
+    def __init__(self, name):
+        self.model = None
+        self.name = name
         self.label2ind = {}
         self.ind2label = {}
         for i, label in enumerate(self.LABELS):
@@ -37,3 +41,11 @@ class AbstracExpert:
         error_rate = error_count * 1.0 / len(G_hat)
 
         return error_rate
+
+    def save_model(self):
+        with open('trained_models/{0}.model'.format(self.name), 'wb') as f:
+            pickle.dump(self.model, f)
+
+    def load_model(self):
+        with open('trained_models/{0}.model'.format(self.name), 'rb') as f:
+            self.model = pickle.load(f)
