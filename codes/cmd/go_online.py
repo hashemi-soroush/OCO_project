@@ -8,22 +8,22 @@ from codes.data_utils.read_write_split import read_online_dataset
 from codes.enemy.enemy import Enemy
 
 
-def go_online():
+def go_online(args):
     X, G = read_online_dataset()
     enemy = Enemy(X, G)
 
-    print('loading experts models \t {0}'.format(datetime.now()))
+    print('[{0}] \t loading experts models'.format(datetime.now()))
     experts = get_all_experts()
     for expert in experts:
         expert.load_model()
 
-    print('calculating experts loss on online data \t {0}'.format(datetime.now()))
+    print('[{0}] \t calculating experts loss on online data'.format(datetime.now()))
     experts_loss = {}
     for expert in experts:
-        print('calculating {0} loss \t {1}'.format(expert.name, datetime.now()))
+        print('[{0}] \t calculating loss {1}'.format(datetime.now(), expert.name))
         experts_loss[expert.name] = expert.calculate_offline_loss(X, G)
 
-    print('starting online learner \t {0}'.format(datetime.now()))
+    print('[{0}] \t starting online learner'.format(datetime.now()))
     online_learner = WeightedMajority(experts, 0.1)
     online_learner_loss = online_learner.start_game(enemy)
 
