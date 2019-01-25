@@ -9,3 +9,7 @@ data/original_data/
 notebooks/
 
 proposal/
+
+*.aux
+*.log
+*.synctex.gz
