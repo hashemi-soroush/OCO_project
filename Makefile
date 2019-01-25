@@ -9,7 +9,7 @@ decompress_original:
 	rm data/original_data/test.zip
 
 split_online_offline_datasets:
-	python -m codes --mode=split --offline_size=$(offline)
+	python -m codes --mode=split --online_size=$(online)
 
 train_experts:
 	python -m codes --mode=train_experts

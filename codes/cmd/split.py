@@ -7,7 +7,7 @@ def split_original_dataset_to_online_offline(args):
 
     original_dataset = read_original_datasets()
 
-    online_dataset, offline_dataset = split_online_offline(original_dataset, args.offline_size)
+    online_dataset, offline_dataset = split_online_offline(original_dataset, args.online_size)
 
     save_split_dataset(online_dataset, 'online')
     save_split_dataset(offline_dataset, 'offline')

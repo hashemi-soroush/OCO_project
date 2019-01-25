@@ -14,7 +14,7 @@ if __name__ == '__main__':
 
     parser = argparse.ArgumentParser()
     parser.add_argument('--mode', required=True, type=str, choices=jump_table.keys())
-    parser.add_argument('--offline_size', required=False, type=float, default=0.95)
+    parser.add_argument('--online_size', required=False, type=float, default=0.95)
     args = parser.parse_args()
 
     jump_table[args.mode](args)
